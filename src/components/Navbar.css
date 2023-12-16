@@ -1,0 +1,27 @@
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.navbar-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.navbar-back-btn {
+  position: absolute;
+  left: 29px;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 100;
+  font-size: 25px;
+  color: royalblue;
+}

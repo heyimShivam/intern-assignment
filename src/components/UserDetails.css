@@ -1,0 +1,49 @@
+.location-container {
+  color: #232b2b;
+  margin: 15px 0px 5px 0px;
+  border: 1px solid #c0c0c04f;
+  background-color: #c0c0c04f;
+  border-radius: 3px;
+  display: flex;
+  width: fit-content;
+  padding: 10px 15px 10px 15px;
+}
+
+.contact-number-container {
+  border: 1px solid #232b2b;
+  margin: 10px 0px 5px 0px;
+  border-radius: 3px;
+  display: flex;
+  width: fit-content;
+  padding: 10px 15px 10px 15px;
+}
+
+.checkout-location-dot {
+  font-size: 12px;
+  padding-top: 3px;
+  padding-right: 10px;
+}
+
+.contact-number-ico {
+  font-size: 12px;
+  padding-top: 3px;
+  padding-right: 10px;
+}
+
+.contact-number-text {
+  font-weight: 300;
+  font-size: 12px;
+  width: 287px;
+  outline: none;
+  border: none;
+  background-color: #c0c0c000;
+}
+
+.checkout-location-text {
+  font-weight: 300;
+  font-size: 12px;
+  width: 290px;
+  outline: none;
+  border: none;
+  background-color: #c0c0c000;
+}
