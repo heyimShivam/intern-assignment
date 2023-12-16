@@ -14,20 +14,38 @@ const UserDetails = () => {
   }
 
   function updateValidatedContactNumber(inputValue) {
-    setContactNumber(inputValue.target.value);
+    if (inputValue.target.value.length === 10) {
+      // Warning 10 digit Phone number error.
+      return;
+    }
+
+    if (
+      inputValue.nativeEvent.data >= "0" &&
+      inputValue.nativeEvent.data <= "9"
+    ) {
+      setContactNumber(inputValue.target.value);
+      return;
+    }
+
+    // Warning a-z.
   }
 
   return (
     <>
       <div className="location-container">
-        <FontAwesomeIcon icon={faLocationDot} className="checkout-location-dot" />
+        <FontAwesomeIcon
+          icon={faLocationDot}
+          className="checkout-location-dot"
+        />
         <input
           name="Location"
           width="fit-content"
           placeholder="Enter Location..."
           value={location}
           className="checkout-location-text"
-          onChange={(value) => { updateValidatedLocation(value) }}
+          onChange={(value) => {
+            updateValidatedLocation(value);
+          }}
           required
         />
       </div>
@@ -38,7 +56,9 @@ const UserDetails = () => {
           placeholder="Enter Contact number..."
           pattern="[0-9]{10}"
           value={contactNumber}
-          onChange={value => { updateValidatedContactNumber(value) }}
+          onChange={(value) => {
+            updateValidatedContactNumber(value);
+          }}
           className="contact-number-text"
           required
         />
