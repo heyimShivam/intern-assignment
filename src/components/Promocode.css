@@ -1,0 +1,40 @@
+.promocode {
+  margin-top: -20px;
+}
+
+.promocode-container {
+  color: #232b2b;
+  margin-top: 15px;
+  border-radius: 3px;
+  display: flex;
+  width: fit-content;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.checkout-promocode-text {
+  font-weight: 300;
+  font-size: 11px;
+  width: 210px;
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+  background-color: white;
+  padding: 6px 12px 6px 12px;
+}
+
+.checkout-promocode-apply-btn {
+  text-transform: uppercase;
+  padding: 6px 12px 6px 12px;
+  font-weight: 300;
+  color: royalblue;
+}
+
+@media screen and (max-width: 628px) {
+  .promocode-container {
+    width: 100%;
+  }
+
+  .checkout-promocode-text {
+    width: 100%;
+  }
+}

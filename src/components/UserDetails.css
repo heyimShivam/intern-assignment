@@ -47,3 +47,9 @@
   border: none;
   background-color: #c0c0c000;
 }
+
+@media screen and (max-width: 628px) {
+  .location-container, .checkout-location-text, .contact-number-text, .contact-number-container {
+    width: 100%;
+  }
+}

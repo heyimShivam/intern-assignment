@@ -2,13 +2,8 @@
     padding: 20px 0px;
 }
 
-.order-list-text {
-  font-weight: 200;
-  font-size: 11px;
-}
-
 .order-list-content {
-  padding: 10px 0px;
+  padding-top: 10px;
 }
 
 .order-item {

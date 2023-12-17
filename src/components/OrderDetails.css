@@ -2,7 +2,6 @@
   padding: 15px 0px;
   display: grid;
   gap: 15px;
-  /* box-shadow: rgba(9, 30, 66, 0.08) 0px 0px 0px 1px; */
   grid-template-rows: repeat(1, 70px);
   grid-template-columns: minmax(100px, 0.9fr) minmax(270px, 3fr) minmax(
       150px,
@@ -56,16 +55,18 @@
 }
 
 .update-tool-btn:hover {
-  background-color: rgba(65, 105, 225, 0.7);
+  background-color: rgba(128, 128, 128, 0.589);
 }
 
 .update-tool-btn:active {
-  background-color: royalblue;
+  background-color: gray;
 }
 
 @media screen and (max-width: 628px) {
   .order-detail-container {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    box-shadow: rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    border-radius: 5px;
   }
 
   .update-tools {

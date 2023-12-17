@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faXmarkCircle, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 import "./UserDetails.css";
 
@@ -49,6 +48,7 @@ const UserDetails = () => {
           required
         />
       </div>
+
       <div className="contact-number-container">
         <FontAwesomeIcon icon={faPhone} className="contact-number-ico" />
         <input
@@ -62,6 +62,21 @@ const UserDetails = () => {
           className="contact-number-text"
           required
         />
+      </div>
+
+      <div className="warnings-toast-container">
+        <div className="warning-toast-message">
+          Enter proper Promocode.
+          <span className="warning-toast-message-xmark">
+            <FontAwesomeIcon icon={faXmarkCircle}></FontAwesomeIcon>
+          </span>
+        </div>
+        <div className="warning-toast-message">
+          Enter proper Promocode.
+          <span className="warning-toast-message-xmark">
+            <FontAwesomeIcon icon={faXmarkCircle}></FontAwesomeIcon>
+          </span>
+        </div>
       </div>
     </>
   );

@@ -4,6 +4,7 @@ import HomePage from "./pages/Home";
 import CheckoutPage from "./pages/Checkout";
 import ErrorPage from "./pages/Error";
 import Navbar from "./components/Navbar";
+import PaymentPage from "./pages/Payment";
 
 const ParentComponent = () => {
   return (
@@ -28,6 +29,10 @@ const appRouter = createBrowserRouter([
         path: "/checkout",
         element: <CheckoutPage />,
       },
+      {
+        path: "/payment",
+        element: <PaymentPage />
+      }
     ],
   },
   {

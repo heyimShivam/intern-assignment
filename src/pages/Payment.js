@@ -3,7 +3,11 @@ import "./Payment.css";
 const PaymentPage = () => {
   return (
     <>
-      <h1>This is Payment Page</h1>
+      <div className="container">
+        <div>
+          <h3 className="heading">Choose Payment Method</h3>
+        </div>
+      </div>
     </>
   );
 };
