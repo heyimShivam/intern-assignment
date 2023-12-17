@@ -1,0 +1,49 @@
+.make-payment-section {
+  width: 600px;
+}
+
+.make-payment-btn-inside {
+  width: 100%;
+  background-color: royalblue;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  color: white;
+  border: 0px;
+  font-weight: 800;
+  height: 100%;
+  padding: 12px 0px;
+}
+
+.payment-method-selected {
+    color: royalblue;
+    transition: 0.5s;
+}
+
+.payment-details {
+  margin-bottom: 15px;
+  font-weight: 300;
+  font-size: 15px;
+  color: black;
+  width: 100%;
+  position: relative;
+}
+
+.payment-details span {
+  position: absolute;
+  top: 0;
+  right: 0px;
+}
+
+.total-fee-make-payment-section span {
+  font-weight: 800;
+}
+
+@media screen and (max-width: 628px) {
+  .make-payment-section {
+    width: 100%;
+  }
+}
