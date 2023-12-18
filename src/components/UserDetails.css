@@ -38,6 +38,10 @@
   background-color: white;
 }
 
+.warning-toast-message {
+  color: red;
+}
+
 @media screen and (max-width: 628px) {
   .detail-container, .user-detail-text, .contact-number-text, .contact-number-container {
     width: 100%;

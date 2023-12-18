@@ -13,30 +13,9 @@ const CheckoutPage = () => {
   const addOrderDetails = useProductDetailsStore(
     (state) => state.addOrderDetails
   );
-  const orderDetailsProducts = useProductDetailsStore(
-    (state) => state.orderDetailsProducts
-  );
   const orderAmountDetails = useProductDetailsStore(
     (state) => state.orderAmountDetails
   );
-  const setOrderAmountDetails = useProductDetailsStore(
-    (state) => state.setOrderAmountDetails
-  );
-
-  function calculateOrderAmount() {
-    let totalAmount = 0;
-
-    orderDetailsProducts.map((product) => {
-      totalAmount = (product.quantity * product.price) + totalAmount;
-    });
-
-    setOrderAmountDetails({
-      orderAmount: (totalAmount).toFixed(3),
-      totalAmount: (totalAmount + 100 + 10).toFixed(3),
-      deliveryFee: (100).toFixed(3),
-      discount: (10).toFixed(3)
-    })
-  }
 
   async function fetchOrderDetails() {
     await fetch(ORDER_DETAILS)
@@ -50,35 +29,7 @@ const CheckoutPage = () => {
   }
 
   useEffect(() => {
-    // fetchOrderDetails();
-    addOrderDetails({
-      products: [
-        {
-          id: 17,
-          title: "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
-          price: 39.99,
-          image: "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
-          quantity: 4,
-        },
-        {
-          id: 6,
-          title: "Solid Gold Petite Micropave",
-          price: 168,
-          image:
-            "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
-          quantity: 10,
-        },
-        {
-          id: 10,
-          title: "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
-          price: 109,
-          image: "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
-          quantity: 1,
-        },
-      ],
-      paymentMethods: ["UPI", "CARDS"],
-    });
-    calculateOrderAmount();
+    fetchOrderDetails();
   }, []);
 
   return (
@@ -133,7 +84,7 @@ const CheckoutPage = () => {
           </div>
           <div className="checkout-total-item payment-btn">
             <Link className="payment-btn-inside" to="/payment">
-              Payment{" "}
+              Payment
             </Link>
           </div>
         </div>

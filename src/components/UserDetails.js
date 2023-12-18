@@ -2,20 +2,42 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faXmarkCircle, faPhone } from "@fortawesome/free-solid-svg-icons";
 
+import useProductDetailsStore from "../store/ProductDetailsStore";
+
 import "./UserDetails.css";
 
 const UserDetails = () => {
-  const [location, setLocation] = useState("");
-  const [contactNumber, setContactNumber] = useState("");
   const [focusDetailContainer, setFocusDetailContainer] = useState("");
+  const [tendigitWarning, setTendigitWarning] = useState(false);
+  const [alphabetWarning, setAlphabetWarning] = useState(false);
+  const [locationRequired, setLocationRequired] = useState(false);
+  const location = useProductDetailsStore(
+    (state) => state.location
+  );
+  const contactNumber = useProductDetailsStore(
+    (state) => state.contactNumber
+  );
+  const updateLocation = useProductDetailsStore(
+    (state) => state.updateLocation
+  );
+  const updateContactNumber = useProductDetailsStore(
+    (state) => state.updateContactNumber
+  );
 
   function updateValidatedLocation(inputValue) {
-    setLocation(inputValue.target.value);
+    updateLocation(inputValue.target.value);
   }
 
   function updateValidatedContactNumber(inputValue) {
-    if (inputValue.target.value.length === 11) {
-      // Warning 10 digit Phone number error.
+    if (!(
+      inputValue.nativeEvent.data >= "0" &&
+      inputValue.nativeEvent.data <= "9"
+    )) {
+      setAlphabetWarning(true);
+    }
+
+    if (inputValue.target.value.length >= 11) {
+      setTendigitWarning(true);
       return;
     }
 
@@ -23,11 +45,9 @@ const UserDetails = () => {
       inputValue.nativeEvent.data >= "0" &&
       inputValue.nativeEvent.data <= "9"
     ) {
-      setContactNumber(inputValue.target.value);
+      updateContactNumber(inputValue.target.value);
       return;
     }
-
-    // Warning a-z.
   }
 
   return (
@@ -50,6 +70,15 @@ const UserDetails = () => {
         />
       </div>
 
+
+      {locationRequired ? <div className="warning-toast-message">
+          Location is required.
+          <span className="warning-toast-message-xmark">
+            <FontAwesomeIcon icon={faXmarkCircle} onClick={() => {setLocationRequired(!locationRequired)}}></FontAwesomeIcon>
+          </span>
+        </div>: <></>}
+
+
       <div className={focusDetailContainer==="contact-number" ? "detail-container focus" : "detail-container"}>
         <FontAwesomeIcon icon={faPhone} className="user-detail-icon" />
         <input
@@ -66,18 +95,19 @@ const UserDetails = () => {
       </div>
 
       <div className="warnings-toast-container">
-        <div className="warning-toast-message">
-          Enter proper Promocode.
+        {tendigitWarning ? <div className="warning-toast-message" >
+          You can only enter 10 digits.
           <span className="warning-toast-message-xmark">
-            <FontAwesomeIcon icon={faXmarkCircle}></FontAwesomeIcon>
+            <FontAwesomeIcon icon={faXmarkCircle} onClick={() => {setTendigitWarning(!tendigitWarning)}}></FontAwesomeIcon>
           </span>
-        </div>
-        <div className="warning-toast-message">
-          Enter proper Promocode.
+        </div> : <></>}
+
+        {alphabetWarning ? <div className="warning-toast-message">
+          You can only enter numbers i.e. 0-9.
           <span className="warning-toast-message-xmark">
-            <FontAwesomeIcon icon={faXmarkCircle}></FontAwesomeIcon>
+            <FontAwesomeIcon icon={faXmarkCircle} onClick={() => {setAlphabetWarning(!alphabetWarning)}}></FontAwesomeIcon>
           </span>
-        </div>
+        </div>: <></>}
       </div>
     </>
   );

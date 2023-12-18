@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 
+import useProductDetailsStore from "../store/ProductDetailsStore";
 import PaymentOptions from "../components/PaymentOptions";
 
 import "./Payment.css";
 
 const PaymentPage = () => {
+  const orderAmountDetails = useProductDetailsStore(
+    (state) => state.orderAmountDetails
+  );
+
   return (
     <>
       <div className="container">
@@ -12,10 +17,10 @@ const PaymentPage = () => {
         <PaymentOptions />
         <div className="make-payment-section">
           <p className="admin-fee-make-payment-section payment-details">
-            Admin Fee <span>{(0).toFixed(3)}</span>
+            Admin Fee <span>{(orderAmountDetails.adminFee).toFixed(3)}</span>
           </p>
           <p className="total-fee-make-payment-section payment-details">
-            Total <span>{(5000).toFixed(3)}</span>
+            Total <span>{(orderAmountDetails.totalAmount).toFixed(3)}</span>
           </p>
           <Link className="make-payment-btn-inside" to="/order-confirmation">
             Make a payment
