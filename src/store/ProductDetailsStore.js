@@ -5,56 +5,82 @@ const ProductDetailsStore = (set) => ({
   contactNumber: "",
   detailsProducts: {},
   orderDetailsProducts: [],
-  orderAmountDetails: {
-    adminFee: 0,
-    orderAmount: 0,
-    totalAmount: 0,
-    deliveryFee: 100,
-    discount: 10,
+  orderAmount: 0,
+  totalAmount: 0,
+  deliveryFee: 100,
+  discount: 10,
+  adminFee: 0,
+  paymentMethod: "CARDS",
+  setOrderAmount: (value) => {
+    set((state) => ({
+      orderAmount: value,
+    }));
   },
-  paymentMethod: "",
+  setTotalAmount: (value) => {
+    set((state) => ({
+      totalAmount: value,
+    }));
+  },
+  setDeliveryFee: (value) => {
+    set((state) => ({
+      deliveryFee: value,
+    }));
+  },
+  setDiscount: (value) => {
+    set((state) => ({
+      discount: value,
+    }));
+  },
+  setAdminFee: (value) => {
+    set((state) => ({
+      adminFee: value,
+    }));
+  },
   updatePaymentMethod: (value) => {
     set((state) => ({
-        paymentMethod: value
-    }))
+      paymentMethod: value,
+    }));
   },
   updateLocation: (details) => {
     set((state) => ({
-        location: details,
+      location: details,
     }));
   },
   updateContactNumber: (details) => {
     set((state) => ({
-        contactNumber: details
-    }));
-  },
-  updateOrderAmountDetails: (details) => {
-    set((state) => ({
-      orderAmountDetails: details,
+      contactNumber: details,
     }));
   },
   addOrderDetails: (details) => {
     let calculateAmountDetails = {
-      adminFee: 0,
       orderAmount: 0,
       totalAmount: 0,
       deliveryFee: 100,
       discount: 10,
+      adminFee: 0,
     };
-    let totalAmount = 0;
+
+    let orderAmount = 0;
+
     for (let product of details?.products) {
-      totalAmount = product?.quantity * product?.price + totalAmount;
+      orderAmount = product?.quantity * product?.price + orderAmount;
     }
-    calculateAmountDetails.orderAmount = totalAmount;
+
+    calculateAmountDetails.orderAmount = orderAmount;
+
     calculateAmountDetails.totalAmount =
       calculateAmountDetails.orderAmount +
-      calculateAmountDetails.deliveryFee +
+      calculateAmountDetails.deliveryFee -
       calculateAmountDetails.discount;
 
     set((state) => ({
       detailsProducts: details,
       orderDetailsProducts: details?.products,
-      orderAmountDetails: calculateAmountDetails,
+      orderAmount: calculateAmountDetails.orderAmount,
+      totalAmount: calculateAmountDetails.totalAmount,
+      deliveryFee: calculateAmountDetails.deliveryFee,
+      discount: calculateAmountDetails.discount,
+      adminFee: calculateAmountDetails.adminFee,
     }));
   },
   addOrderQuantity: (id) => {
@@ -63,8 +89,8 @@ const ProductDetailsStore = (set) => ({
         (product, index) => {
           if (product.id === id) {
             state.orderDetailsProducts[index].quantity++;
-            state.orderAmountDetails.orderAmount +=
-              state.orderDetailsProducts[index].price;
+            state.orderAmount += state.orderDetailsProducts[index].price;
+            state.totalAmount += state.orderDetailsProducts[index].price;
           }
           return true;
         }
@@ -77,8 +103,8 @@ const ProductDetailsStore = (set) => ({
         (product, index) => {
           if (product.id === id) {
             state.orderDetailsProducts[index].quantity--;
-            state.orderAmountDetails.orderAmount -=
-              state.orderDetailsProducts[index].price;
+            state.orderAmount -= state.orderDetailsProducts[index].price;
+            state.totalAmount -= state.orderDetailsProducts[index].price;
 
             if (state.orderDetailsProducts[index].quantity === 0) {
               return false;

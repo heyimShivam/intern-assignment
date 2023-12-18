@@ -8,44 +8,24 @@ import {
   faWallet,
 } from "@fortawesome/free-solid-svg-icons";
 
+import useProductDetailsStore from "../store/ProductDetailsStore";
 import CheckoutOrderList from "../components/CheckoutOrderList";
 import ConfirmationUserDetails from "../components/ConfirmationUserDetails";
 
 import "./OrderConfirmation.css";
 
 const OrderConfirmation = () => {
-  let orderDetails = {
-    products: [
-      {
-        id: 17,
-        title: "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
-        price: 39.99,
-        image: "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
-        quantity: 4,
-      },
-      {
-        id: 6,
-        title: "Solid Gold Petite Micropave",
-        price: 168,
-        image:
-          "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
-        quantity: 10,
-      },
-      {
-        id: 10,
-        title: "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
-        price: 109,
-        image: "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
-        quantity: 1,
-      },
-    ],
-    paymentMethods: ["UPI", "CARDS"],
-  };
-
+  const paymentMethod = useProductDetailsStore((state) => state.paymentMethod);
+  const orderDetailsProducts = useProductDetailsStore((state) => state.orderDetailsProducts);
+  const totalAmount = useProductDetailsStore((state) => state.totalAmount);
+  const deliveryFee = useProductDetailsStore((state) => state.deliveryFee);
+  const orderAmount = useProductDetailsStore((state) => state.orderAmount);
+  const discount = useProductDetailsStore((state) => state.discount);
   const [orderConfirmationMessage, setOrderConfirmationMessage] = useState("");
 
   useEffect(() => {
     setOrderConfirmationMessage("Order has been placed successfully.");
+    document.getElementById("navbar-title").innerText = "Confirmation";
   }, []);
 
   return (
@@ -61,7 +41,7 @@ const OrderConfirmation = () => {
           <ConfirmationUserDetails />
           <CheckoutOrderList
             checkoutPage={false}
-            productDetails={orderDetails.products}
+            productDetails={orderDetailsProducts}
           />
         </div>
 
@@ -70,23 +50,23 @@ const OrderConfirmation = () => {
 
           <div className="order-summary-details">
             <div className="order-summary-item">
-              Order Amount <span className="order-summary-span-item">300</span>
+              Order Amount <span className="order-summary-span-item">{orderAmount}</span>
             </div>
 
             <div className="order-summary-item">
-              Delivery Fee <span className="order-summary-span-item">100</span>
+              Delivery Fee <span className="order-summary-span-item">{deliveryFee}</span>
             </div>
 
             <div className="order-summary-item">
-              Discount <span className="order-summary-span-item">10</span>
+              Discount <span className="order-summary-span-item">{discount}</span>
             </div>
             <div className="order-summary-item order-summary-item-total">
-              Total{" "}
+              Total
               <span
                 className="order-summary-span-item total-confirm"
                 style={{ color: "royalblue" }}
               >
-                {(5000).toFixed(3)}
+                {(totalAmount).toFixed(3)}
               </span>
             </div>
           </div>
@@ -94,13 +74,54 @@ const OrderConfirmation = () => {
 
         <div>
           <h3 className="heading">Payment Method</h3>
-          <div className="payment-method-detail">
-            <FontAwesomeIcon
-              icon={faCreditCard}
-              className="payment-method-detail-icon"
-            />
-            <p>Credit/Debit Card</p>
-          </div>
+          {paymentMethod === "CARDS" ? (
+            <div className="payment-method-detail">
+              <FontAwesomeIcon
+                icon={faCreditCard}
+                className="payment-method-detail-icon"
+              />
+              <p>Credit/Debit Card</p>
+            </div>
+          ) : (
+            <></>
+          )}
+
+          {paymentMethod === "UPI" ? (
+            <div className="payment-method-detail">
+              <FontAwesomeIcon
+                icon={faDollar}
+                className="payment-method-detail-icon"
+              />
+              <p>UPI</p>
+            </div>
+          ) : (
+            <></>
+          )}
+
+          {paymentMethod === "E-WALLET" ? (
+            <div className="payment-method-detail">
+              <FontAwesomeIcon
+                icon={faWallet}
+                className="payment-method-detail-icon"
+              />
+              <p>E-Wallet</p>
+            </div>
+          ) : (
+            <></>
+          )}
+
+          {paymentMethod === "COD" ? (
+            <div className="payment-method-detail">
+              <FontAwesomeIcon
+                icon={faTruck}
+                className="payment-method-detail-icon"
+              />
+              <p>COD</p>
+            </div>
+          ) : (
+            <></>
+          )}
+
           <div className="retry-payment">
             <Link className="retry-payment-btn" to="/payment">
               Retry payment

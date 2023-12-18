@@ -93,6 +93,10 @@
   text-align: center;
 }
 
+.disabled-btn {
+  opacity: 50%;
+}
+
 @media screen and (max-width: 628px) {
   .order-summary-details, .payment-method-detail, .retry-payment, .checkout-total {
     width: 100%;

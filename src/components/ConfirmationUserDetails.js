@@ -1,11 +1,13 @@
-import "./ConfirmationUserDetails.css";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 
+import useProductDetailsStore from "../store/ProductDetailsStore";
+
+import "./ConfirmationUserDetails.css";
+
 const ConfirmationUserDetails = () => {
-  const location = "Village Sai, P.O. Alampur Teh. jaisinghpus distt. kangra H.P.";
-  const phoneNumber = "8219601395";
+  const location = useProductDetailsStore((state) => state.location);
+  const contactNumber = useProductDetailsStore((state) => state.contactNumber);
 
   return (
     <>
@@ -23,7 +25,7 @@ const ConfirmationUserDetails = () => {
           className="user-detail-icon"
         />
 
-        <p className="user-detail-text"> { phoneNumber } </p>
+        <p className="user-detail-text"> { contactNumber } </p>
       </div>
     </>
   );

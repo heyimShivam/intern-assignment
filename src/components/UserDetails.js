@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot, faXmarkCircle, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+  faLocationDot,
+  faXmarkCircle,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 
 import useProductDetailsStore from "../store/ProductDetailsStore";
 
 import "./UserDetails.css";
 
-const UserDetails = () => {
+const UserDetails = (props) => {
   const [focusDetailContainer, setFocusDetailContainer] = useState("");
   const [tendigitWarning, setTendigitWarning] = useState(false);
   const [alphabetWarning, setAlphabetWarning] = useState(false);
-  const [locationRequired, setLocationRequired] = useState(false);
-  const location = useProductDetailsStore(
-    (state) => state.location
-  );
-  const contactNumber = useProductDetailsStore(
-    (state) => state.contactNumber
-  );
+
+  const location = useProductDetailsStore((state) => state.location);
+  const contactNumber = useProductDetailsStore((state) => state.contactNumber);
   const updateLocation = useProductDetailsStore(
     (state) => state.updateLocation
   );
@@ -29,10 +29,11 @@ const UserDetails = () => {
   }
 
   function updateValidatedContactNumber(inputValue) {
-    if (!(
-      inputValue.nativeEvent.data >= "0" &&
-      inputValue.nativeEvent.data <= "9"
-    )) {
+    if (
+      !(
+        inputValue.nativeEvent.data >= "0" && inputValue.nativeEvent.data <= "9"
+      )
+    ) {
       setAlphabetWarning(true);
     }
 
@@ -52,11 +53,14 @@ const UserDetails = () => {
 
   return (
     <>
-      <div className={focusDetailContainer==="location" ? "detail-container focus" : "detail-container"}>
-        <FontAwesomeIcon
-          icon={faLocationDot}
-          className="user-detail-icon"
-        />
+      <div
+        className={
+          focusDetailContainer === "location"
+            ? "detail-container focus"
+            : "detail-container"
+        }
+      >
+        <FontAwesomeIcon icon={faLocationDot} className="user-detail-icon" />
         <input
           name="Location"
           width="fit-content"
@@ -70,16 +74,13 @@ const UserDetails = () => {
         />
       </div>
 
-
-      {locationRequired ? <div className="warning-toast-message">
-          Location is required.
-          <span className="warning-toast-message-xmark">
-            <FontAwesomeIcon icon={faXmarkCircle} onClick={() => {setLocationRequired(!locationRequired)}}></FontAwesomeIcon>
-          </span>
-        </div>: <></>}
-
-
-      <div className={focusDetailContainer==="contact-number" ? "detail-container focus" : "detail-container"}>
+      <div
+        className={
+          focusDetailContainer === "contact-number"
+            ? "detail-container focus"
+            : "detail-container"
+        }
+      >
         <FontAwesomeIcon icon={faPhone} className="user-detail-icon" />
         <input
           type="tel"
@@ -89,25 +90,44 @@ const UserDetails = () => {
           onChange={(value) => {
             updateValidatedContactNumber(value);
           }}
+          id="contact-number"
           className="user-detail-text"
           required
         />
       </div>
 
       <div className="warnings-toast-container">
-        {tendigitWarning ? <div className="warning-toast-message" >
-          You can only enter 10 digits.
-          <span className="warning-toast-message-xmark">
-            <FontAwesomeIcon icon={faXmarkCircle} onClick={() => {setTendigitWarning(!tendigitWarning)}}></FontAwesomeIcon>
-          </span>
-        </div> : <></>}
+        {tendigitWarning ? (
+          <div className="warning-toast-message">
+            You can only enter 10 digits.
+            <span className="warning-toast-message-xmark">
+              <FontAwesomeIcon
+                icon={faXmarkCircle}
+                onClick={() => {
+                  setTendigitWarning(!tendigitWarning);
+                }}
+              ></FontAwesomeIcon>
+            </span>
+          </div>
+        ) : (
+          <></>
+        )}
 
-        {alphabetWarning ? <div className="warning-toast-message">
-          You can only enter numbers i.e. 0-9.
-          <span className="warning-toast-message-xmark">
-            <FontAwesomeIcon icon={faXmarkCircle} onClick={() => {setAlphabetWarning(!alphabetWarning)}}></FontAwesomeIcon>
-          </span>
-        </div>: <></>}
+        {alphabetWarning ? (
+          <div className="warning-toast-message">
+            You can only enter numbers i.e. 0-9.
+            <span className="warning-toast-message-xmark">
+              <FontAwesomeIcon
+                icon={faXmarkCircle}
+                onClick={() => {
+                  setAlphabetWarning(!alphabetWarning);
+                }}
+              ></FontAwesomeIcon>
+            </span>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

@@ -4,11 +4,15 @@ import useProductDetailsStore from "../store/ProductDetailsStore";
 import PaymentOptions from "../components/PaymentOptions";
 
 import "./Payment.css";
+import { useEffect } from "react";
 
 const PaymentPage = () => {
-  const orderAmountDetails = useProductDetailsStore(
-    (state) => state.orderAmountDetails
-  );
+  const totalAmount = useProductDetailsStore((state) => state.totalAmount);
+  const adminFee = useProductDetailsStore((state) => state.adminFee);
+
+  useEffect(() => {
+    document.getElementById("navbar-title").innerText = "Payment";
+  });
 
   return (
     <>
@@ -17,10 +21,10 @@ const PaymentPage = () => {
         <PaymentOptions />
         <div className="make-payment-section">
           <p className="admin-fee-make-payment-section payment-details">
-            Admin Fee <span>{(orderAmountDetails.adminFee).toFixed(3)}</span>
+            Admin Fee <span>{(adminFee).toFixed(3)}</span>
           </p>
           <p className="total-fee-make-payment-section payment-details">
-            Total <span>{(orderAmountDetails.totalAmount).toFixed(3)}</span>
+            Total <span>{(totalAmount).toFixed(3)}</span>
           </p>
           <Link className="make-payment-btn-inside" to="/order-confirmation">
             Make a payment
