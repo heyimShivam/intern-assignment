@@ -8,7 +8,7 @@ const ProductDetailsStore = (set) => ({
   orderAmount: 0,
   totalAmount: 0,
   deliveryFee: 100,
-  discount: 10,
+  discount: 0,
   adminFee: 0,
   paymentMethod: "CARDS",
   setOrderAmount: (value) => {
@@ -28,6 +28,8 @@ const ProductDetailsStore = (set) => ({
   },
   setDiscount: (value) => {
     set((state) => ({
+      totalAmount: (state.totalAmount + state.discount) - value,
+      orderAmount: (state.orderAmount + state.discount) - value,
       discount: value,
     }));
   },
@@ -56,7 +58,7 @@ const ProductDetailsStore = (set) => ({
       orderAmount: 0,
       totalAmount: 0,
       deliveryFee: 100,
-      discount: 10,
+      discount: 0,
       adminFee: 0,
     };
 
@@ -70,8 +72,7 @@ const ProductDetailsStore = (set) => ({
 
     calculateAmountDetails.totalAmount =
       calculateAmountDetails.orderAmount +
-      calculateAmountDetails.deliveryFee -
-      calculateAmountDetails.discount;
+      calculateAmountDetails.deliveryFee;
 
     set((state) => ({
       detailsProducts: details,

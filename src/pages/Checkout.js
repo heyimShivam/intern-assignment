@@ -23,7 +23,6 @@ const CheckoutPage = () => {
   const totalAmount = useProductDetailsStore((state) => state.totalAmount);
   const deliveryFee = useProductDetailsStore((state) => state.deliveryFee);
   const discount = useProductDetailsStore((state) => state.discount);
-  const adminFee = useProductDetailsStore((state) => state.adminFee);
 
   function updateAndCheckValidation() {
     if (!(contactNumber.length === 10 && location.length > 0)) {

@@ -24,4 +24,14 @@
   z-index: 100;
   font-size: 25px;
   color: #5076ee;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.navbar-back-btn:hover {
+  background-color: rgba(128, 128, 128, 0.555);
+}
+
+.navbar-back-btn:active {
+  background-color: rgba(128, 128, 128, 1);
 }
