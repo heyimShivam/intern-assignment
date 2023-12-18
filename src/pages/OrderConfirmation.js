@@ -16,7 +16,9 @@ import "./OrderConfirmation.css";
 
 const OrderConfirmation = () => {
   const paymentMethod = useProductDetailsStore((state) => state.paymentMethod);
-  const orderDetailsProducts = useProductDetailsStore((state) => state.orderDetailsProducts);
+  const orderDetailsProducts = useProductDetailsStore(
+    (state) => state.orderDetailsProducts
+  );
   const totalAmount = useProductDetailsStore((state) => state.totalAmount);
   const deliveryFee = useProductDetailsStore((state) => state.deliveryFee);
   const orderAmount = useProductDetailsStore((state) => state.orderAmount);
@@ -50,15 +52,18 @@ const OrderConfirmation = () => {
 
           <div className="order-summary-details">
             <div className="order-summary-item">
-              Order Amount <span className="order-summary-span-item">{orderAmount}</span>
+              Order Amount
+              <span className="order-summary-span-item">{orderAmount}</span>
             </div>
 
             <div className="order-summary-item">
-              Delivery Fee <span className="order-summary-span-item">{deliveryFee}</span>
+              Delivery Fee
+              <span className="order-summary-span-item">{deliveryFee}</span>
             </div>
 
             <div className="order-summary-item">
-              Discount <span className="order-summary-span-item">{discount}</span>
+              Discount
+              <span className="order-summary-span-item">{discount}</span>
             </div>
             <div className="order-summary-item order-summary-item-total">
               Total
@@ -66,7 +71,7 @@ const OrderConfirmation = () => {
                 className="order-summary-span-item total-confirm"
                 style={{ color: "royalblue" }}
               >
-                {(totalAmount).toFixed(3)}
+                {totalAmount.toFixed(3)}
               </span>
             </div>
           </div>
