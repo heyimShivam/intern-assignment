@@ -7,13 +7,14 @@ import "./UserDetails.css";
 const UserDetails = () => {
   const [location, setLocation] = useState("");
   const [contactNumber, setContactNumber] = useState("");
+  const [focusDetailContainer, setFocusDetailContainer] = useState("");
 
   function updateValidatedLocation(inputValue) {
     setLocation(inputValue.target.value);
   }
 
   function updateValidatedContactNumber(inputValue) {
-    if (inputValue.target.value.length === 10) {
+    if (inputValue.target.value.length === 11) {
       // Warning 10 digit Phone number error.
       return;
     }
@@ -31,17 +32,17 @@ const UserDetails = () => {
 
   return (
     <>
-      <div className="location-container">
+      <div className={focusDetailContainer==="location" ? "detail-container focus" : "detail-container"}>
         <FontAwesomeIcon
           icon={faLocationDot}
-          className="checkout-location-dot"
+          className="user-detail-icon"
         />
         <input
           name="Location"
           width="fit-content"
           placeholder="Enter Location..."
           value={location}
-          className="checkout-location-text"
+          className="user-detail-text"
           onChange={(value) => {
             updateValidatedLocation(value);
           }}
@@ -49,8 +50,8 @@ const UserDetails = () => {
         />
       </div>
 
-      <div className="contact-number-container">
-        <FontAwesomeIcon icon={faPhone} className="contact-number-ico" />
+      <div className={focusDetailContainer==="contact-number" ? "detail-container focus" : "detail-container"}>
+        <FontAwesomeIcon icon={faPhone} className="user-detail-icon" />
         <input
           type="tel"
           placeholder="Enter Contact number..."
@@ -59,7 +60,7 @@ const UserDetails = () => {
           onChange={(value) => {
             updateValidatedContactNumber(value);
           }}
-          className="contact-number-text"
+          className="user-detail-text"
           required
         />
       </div>

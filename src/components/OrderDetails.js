@@ -8,11 +8,16 @@ import {
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
+import useProductDetailsStore from "../store/ProductDetailsStore";
+
 import "./OrderDetails.css";
 
-const OrderDetails = ({ details }) => {
+const OrderDetails = ({ checkoutPage, details }) => {
   const [fav, setFav] = useState(false);
-  const [count, setCount] = useState(details.quantity);
+
+  const orderDetailsProducts = useProductDetailsStore((state) => state.orderDetailsProducts);
+  const addOrderQuantity = useProductDetailsStore((state) => state.addOrderQuantity);
+  const removeOrderQuantity = useProductDetailsStore((state) => state.removeOrderQuantity);
 
   return (
     <div className="order-detail-container">
@@ -27,20 +32,23 @@ const OrderDetails = ({ details }) => {
       <div className="item title-price">
         <div className="title">{ details.title }</div>
         <div className="price">
-          Rs. {(details.price * count).toFixed(3)}
-          <span className="quanity-detail">Quantity: {count}</span>{" "}
+          Rs. {(details.price * details.quantity).toFixed(3)}
+          <span className="quanity-detail">Quantity: {details.quantity}</span>{" "}
         </div>
       </div>
 
-      <div className="item update-tools">
-        <div className="update-tool-btn">
-          <FontAwesomeIcon icon={faPlus} onClick={() => setCount(count + 1)} />
+      {checkoutPage ? <div className="item update-tools" >
+        <div className="update-tool-btn" onClick={() => {
+          addOrderQuantity(details.id);
+          }}>
+          <FontAwesomeIcon icon={faPlus}/>
         </div>
-        <div className="update-tool-btn">
-          {count !== 1  ? (
+        <div className="update-tool-btn" onClick={() => {
+          removeOrderQuantity(details.id);
+          }}>
+          {details.quantity !== 1  ? (
             <FontAwesomeIcon
               icon={faMinus}
-              onClick={() => setCount(count - 1)}
             />
           ) : (
             <FontAwesomeIcon icon={faTrashAlt} />
@@ -57,7 +65,7 @@ const OrderDetails = ({ details }) => {
             />
           )}
         </div>
-      </div>
+      </div>: <div></div>}
     </div>
   );
 };

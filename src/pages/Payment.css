@@ -4,7 +4,7 @@
 
 .make-payment-btn-inside {
   width: 100%;
-  background-color: royalblue;
+  background-color: #5076ee;
   text-decoration: none;
   text-align: center;
   display: flex;
@@ -19,7 +19,7 @@
 }
 
 .payment-method-selected {
-    color: royalblue;
+    color: #5076ee;
     transition: 0.5s;
 }
 

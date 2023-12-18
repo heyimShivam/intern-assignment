@@ -1,0 +1,67 @@
+.order-confirmation {
+  width: 100%;
+  height: 120px;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.success {
+  color: white;
+  background-color: green;
+}
+
+.failed {
+  color: white;
+  background-color: maroon;
+}
+
+.processing {
+  color: white;
+  background-color: rgb(88, 88, 88);
+}
+
+.retry-making-payment {
+  margin: 25px 0px;
+}
+
+.payment-method-detail {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  color: black;
+  font-size: 15px;
+  width: 600px;
+  margin-bottom: 5px;
+}
+
+.payment-method-detail-icon {
+  font-size: 19px;
+  padding: 15px 15px 15px 0px;
+}
+
+.payment-method-detail-text {
+  font-weight: 400;
+}
+
+.total-confirm {
+  padding-top: 5px;
+  font-weight: 900;
+}
+
+.order-summary-item-total {
+  font-weight: 900;
+  padding: 5px 0px;
+  margin: 5px 0px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+@media screen and (max-width: 628px) {
+  .payment-method-detail {
+    width: 100%;
+  }
+}

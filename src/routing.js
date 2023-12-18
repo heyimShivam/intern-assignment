@@ -5,6 +5,7 @@ import CheckoutPage from "./pages/Checkout";
 import ErrorPage from "./pages/Error";
 import Navbar from "./components/Navbar";
 import PaymentPage from "./pages/Payment";
+import OrderConfirmation from "./pages/OrderConfirmation";
 
 const ParentComponent = () => {
   return (
@@ -32,6 +33,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/payment",
         element: <PaymentPage />
+      },
+      {
+        path: "/order-confirmation",
+        element: <OrderConfirmation />
       }
     ],
   },

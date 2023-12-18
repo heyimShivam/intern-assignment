@@ -1,19 +1,20 @@
 import OrderDetails from "./OrderDetails";
+import useProductDetailsStore from "../store/ProductDetailsStore";
 
 import "./CheckoutOrderList.css";
 
 const CheckoutOrderList = (props) => {
+  const orderDetailsProducts = useProductDetailsStore((state) => state.orderDetailsProducts);
+
   return (
     <div className="order-list-container">
       <p className="subheading-checkout">Order List</p>
-      {props.productDetails ? (
+      {orderDetailsProducts ? (
         <div className="order-list-content">
-          {props.productDetails.map((value, index) => (
-            <>
-              <div className="order-item" key={index}>
-                <OrderDetails details={value} />
-              </div>
-            </>
+          {orderDetailsProducts.map((value) => (
+            <div className="order-item" key={value.id}>
+              <OrderDetails checkoutPage={props.checkoutPage} details={value} />
+            </div>
           ))}
         </div>
       ) : (

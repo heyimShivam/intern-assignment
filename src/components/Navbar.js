@@ -8,7 +8,7 @@ const Navbar = () => {
   const [pageName, setPageName] = useState("");
 
   useEffect(() => {
-    setPageName("Payment")
+    setPageName("Confirmation");
   }, []);
   
   return (

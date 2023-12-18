@@ -4,18 +4,45 @@ import { Link } from "react-router-dom";
 import CheckoutOrderList from "../components/CheckoutOrderList";
 import UserDetails from "../components/UserDetails";
 import { ORDER_DETAILS } from "../constants";
+import Promocode from "../components/Promocode";
+import useProductDetailsStore from "../store/ProductDetailsStore";
 
 import "./Checkout.css";
-import Promocode from "../components/Promocode";
 
 const CheckoutPage = () => {
-  const [orderDetails, setOrderDetails] = useState({});
+  const addOrderDetails = useProductDetailsStore(
+    (state) => state.addOrderDetails
+  );
+  const orderDetailsProducts = useProductDetailsStore(
+    (state) => state.orderDetailsProducts
+  );
+  const orderAmountDetails = useProductDetailsStore(
+    (state) => state.orderAmountDetails
+  );
+  const setOrderAmountDetails = useProductDetailsStore(
+    (state) => state.setOrderAmountDetails
+  );
+
+  function calculateOrderAmount() {
+    let totalAmount = 0;
+
+    orderDetailsProducts.map((product) => {
+      totalAmount = (product.quantity * product.price) + totalAmount;
+    });
+
+    setOrderAmountDetails({
+      orderAmount: (totalAmount).toFixed(3),
+      totalAmount: (totalAmount + 100 + 10).toFixed(3),
+      deliveryFee: (100).toFixed(3),
+      discount: (10).toFixed(3)
+    })
+  }
 
   async function fetchOrderDetails() {
     await fetch(ORDER_DETAILS)
       .then((data) => data.json())
       .then((value) => {
-        setOrderDetails(value);
+        addOrderDetails(value);
       })
       .catch((error) => {
         console.error(error);
@@ -24,7 +51,7 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     // fetchOrderDetails();
-    setOrderDetails({
+    addOrderDetails({
       products: [
         {
           id: 17,
@@ -51,6 +78,7 @@ const CheckoutPage = () => {
       ],
       paymentMethods: ["UPI", "CARDS"],
     });
+    calculateOrderAmount();
   }, []);
 
   return (
@@ -59,7 +87,7 @@ const CheckoutPage = () => {
         <div>
           <h3 className="heading">Delivery Detail</h3>
           <UserDetails />
-          <CheckoutOrderList productDetails={orderDetails.products} />
+          <CheckoutOrderList checkoutPage={true} />
           <Promocode />
         </div>
 
@@ -68,15 +96,24 @@ const CheckoutPage = () => {
 
           <div className="order-summary-details">
             <div className="order-summary-item">
-              Order Amount <span className="order-summary-span-item">300</span>
+              Order Amount{" "}
+              <span className="order-summary-span-item">
+                {orderAmountDetails.orderAmount}
+              </span>
             </div>
 
             <div className="order-summary-item">
-              Delivery Fee <span className="order-summary-span-item">100</span>
+              Delivery Fee{" "}
+              <span className="order-summary-span-item">
+                {orderAmountDetails.deliveryFee}
+              </span>
             </div>
 
             <div className="order-summary-item">
-              Discount <span className="order-summary-span-item">10</span>
+              Discount{" "}
+              <span className="order-summary-span-item">
+                {orderAmountDetails.discount}
+              </span>
             </div>
           </div>
         </div>
@@ -86,10 +123,18 @@ const CheckoutPage = () => {
             <p className="total-heading">Total</p>
           </div>
           <div className="checkout-total-item checkout-total-heading">
-            <p className="total">{(5000).toFixed(3)}</p>
+            <p className="total">
+              {(
+                Number(orderAmountDetails.orderAmount) +
+                Number(orderAmountDetails.deliveryFee) +
+                Number(orderAmountDetails.discount)
+              ).toFixed(3)}
+            </p>
           </div>
           <div className="checkout-total-item payment-btn">
-          <Link className="payment-btn-inside" to="/payment">Payment </Link>
+            <Link className="payment-btn-inside" to="/payment">
+              Payment{" "}
+            </Link>
           </div>
         </div>
       </div>

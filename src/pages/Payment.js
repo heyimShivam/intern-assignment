@@ -17,7 +17,7 @@ const PaymentPage = () => {
           <p className="total-fee-make-payment-section payment-details">
             Total <span>{(5000).toFixed(3)}</span>
           </p>
-          <Link className="make-payment-btn-inside" to="/payment">
+          <Link className="make-payment-btn-inside" to="/order-confirmation">
             Make a payment
           </Link>
         </div>

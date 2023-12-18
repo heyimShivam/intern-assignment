@@ -17,7 +17,7 @@ const PaymentOptions = () => {
 
   return (
     <div className="payment-all-options">
-      <div className="payment-method card-info" style={"card-info" === selectOption ? {color: "royalblue"} : {}} onClick={() => {
+      <div className="payment-method card-info" style={"card-info" === selectOption ? {color: "#5076ee"} : {}} onClick={() => {
           if(!check.includes("card-info")) {
             return;
           }
@@ -33,7 +33,7 @@ const PaymentOptions = () => {
           </div>
           <div className="payment-option-elements item-2">
             <p> Debit/Credit Card</p>
-            <p style={{color: "black"}}> 1234 **** ****</p>
+            <p style={{color: "gray"}}> 1234 **** ****</p>
           </div>
           <div className="payment-option-elements item-3">
             { selectOption !== "card-info" ?
@@ -44,7 +44,7 @@ const PaymentOptions = () => {
         </div>
       </div>
 
-      <div className="payment-method upi" style={"upi" === selectOption ? {color: "royalblue"} : {}} onClick={() => {
+      <div className="payment-method upi" style={"upi" === selectOption ? {color: "#5076ee"} : {}} onClick={() => {
           if(!check.includes("upi")) {
             return;
           }
@@ -70,7 +70,7 @@ const PaymentOptions = () => {
         </div>
       </div>
 
-      <div className="payment-method e-wallet" style={"e-wallet" === selectOption ? {color: "royalblue"} : {}} onClick={() => {
+      <div className="payment-method e-wallet" style={"e-wallet" === selectOption ? {color: "#5076ee"} : {}} onClick={() => {
           if(!check.includes("e-wallet")) {
             return;
           }
@@ -97,7 +97,7 @@ const PaymentOptions = () => {
         </div>
       </div>
 
-      <div className="payment-method cod"  style={"cod" === selectOption ? {color: "royalblue"} : {}} onClick={() => {
+      <div className="payment-method cod"  style={"cod" === selectOption ? {color: "#5076ee"} : {}} onClick={() => {
           if(!check.includes("cod")) {
             return;
           }
@@ -112,8 +112,8 @@ const PaymentOptions = () => {
             <FontAwesomeIcon icon={faTruck} className="payment-method-icon" />
           </div>
           <div className="payment-option-elements item-2">
-            <p> Chash on delivery</p>
-            <p style={{color: "black"}}> Pay directly to the driver.</p>
+            <p> Cash on delivery</p>
+            <p style={{color: "gray"}}> Pay directly to the driver.</p>
           </div>
           <div className="payment-option-elements item-3">
             { selectOption !== "cod" ?
