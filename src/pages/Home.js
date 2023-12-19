@@ -13,6 +13,7 @@ const HomePage = () => {
         <div class="ocean">
           <div class="wave"></div>
           <div class="wave"></div>
+          <div class="wave"></div>
         </div>
       </div>
     </>

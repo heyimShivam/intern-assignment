@@ -11,7 +11,8 @@ const Navbar = () => {
     <>
       <div className="navbar-container">
         <div className='back-btn-navbar'>
-        <FontAwesomeIcon icon={faAngleLeft} className='navbar-back-btn' onClick={() => {navigate(-1);}}/>
+        {document.getElementById("navbar-title")?.innerText === "Home" ? 
+        <FontAwesomeIcon icon={faAngleLeft} className='navbar-back-btn' onClick={() => {navigate(-1);}}/>:<></>}
         </div>
         <h3 className="navbar-title" id="navbar-title">Home</h3>
       </div>
