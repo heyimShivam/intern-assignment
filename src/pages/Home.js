@@ -5,10 +5,12 @@ import "./Home.css";
 
 const HomePage = () => {
   useEffect(() => {
-    document.getElementById("back-btn-navbar").style.display = "none";
     document.getElementById("navbar-title").innerText = "Home";
+    // to delete back button on the home page.
+    document.getElementById("back-btn-navbar").style.display = "none";
 
     return () => {
+      // to view back button on other pages.
       document.getElementById("back-btn-navbar").style.display = "block";
     };
   }, []);

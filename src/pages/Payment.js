@@ -12,6 +12,8 @@ const PaymentPage = () => {
 
   useEffect(() => {
     document.getElementById("navbar-title").innerText = "Payment";
+    
+    // Scroll to the page top.
     window.scrollTo(0, 0);
   });
 

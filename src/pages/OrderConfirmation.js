@@ -41,8 +41,11 @@ const OrderConfirmation = () => {
   ];
 
   useEffect(() => {
+    // getting random value to showcase three cases success,
+    //  processing, failed of order confirmation.
     setRandomPage(Math.floor(Math.random() * (2 - 0 + 1) + 0));
 
+    // Scroll to the page top.
     window.scrollTo(0, 0);
 
     document.getElementById("navbar-title").innerText = "Confirmation";
