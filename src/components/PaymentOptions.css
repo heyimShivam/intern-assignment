@@ -64,7 +64,7 @@
 }
 
 .selected-method {
-  color: #5076ee;
+  color: var(--primary);
 }
 
 .payment-all-options {

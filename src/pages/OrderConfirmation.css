@@ -32,7 +32,7 @@
   display: flex;
   text-align: center;
   align-items: center;
-  color: black;
+  color: var(--primary-foreground);
   font-size: 15px;
   width: 600px;
   margin-bottom: 5px;

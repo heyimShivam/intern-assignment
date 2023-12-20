@@ -23,7 +23,7 @@
   transform: translate(0, -50%);
   z-index: 100;
   font-size: 25px;
-  color: #5076ee;
+  color: var(--primary);
   width: 35px;
   height: 35px;
   border-radius: 50%;

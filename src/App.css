@@ -1,10 +1,17 @@
+:root {
+  --background: hsl(222.2, 84%, 4.9%);
+  --foreground: hsl(210, 40%, 98%);
+  --primary: hwb(217 23% 4%);
+  --primary-foreground: hsl(222.2, 47.4%, 11.2%);
+}
+
 .container {
   margin: 5px 15px;
   padding: 5px 15px;
 }
 
 .heading {
-  color: #494f55;
+  color: var(--primary-foreground);
   font-weight: bold;
   font-size: 18px;
   font-style: bold;

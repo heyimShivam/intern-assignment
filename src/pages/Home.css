@@ -7,7 +7,7 @@
 }
 
 .groww-assignment-btn {
-  background-color: royalblue;
+  background-color: var(--primary);
   padding: 25px 12px;
   text-align: center;
   text-decoration: none;

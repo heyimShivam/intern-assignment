@@ -47,6 +47,7 @@ const CheckoutPage = () => {
   useEffect(() => {
     fetchOrderDetails();
     document.getElementById("navbar-title").innerText = "Checkout";
+    window.scrollTo(0, 0);
   }, []);
 
   return (

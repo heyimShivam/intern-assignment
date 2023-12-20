@@ -23,7 +23,6 @@ const OrderConfirmation = () => {
   const orderDetailsProducts = useProductDetailsStore(
     (state) => state.orderDetailsProducts
   );
-  const [orderConfirmationMessage, setOrderConfirmationMessage] = useState("");
   const [randomPage, setRandomPage] = useState(0);
 
   const orderConfirmation = [
@@ -44,18 +43,15 @@ const OrderConfirmation = () => {
   useEffect(() => {
     setRandomPage(Math.floor(Math.random() * (2 - 0 + 1) + 0));
 
-    console.log(randomPage);
+    window.scrollTo(0, 0);
+
     document.getElementById("navbar-title").innerText = "Confirmation";
   }, []);
 
   return (
     <>
       <div className="outer-container">
-        <div
-          className={
-            "order-confirmation " + orderConfirmation[randomPage].class
-          }
-        >
+        <div className={ "order-confirmation " + orderConfirmation[randomPage].class }>
           <div className="order-confirmation-text">
             {orderConfirmation[randomPage].text}
           </div>
@@ -152,9 +148,12 @@ const OrderConfirmation = () => {
             <></>
           )}
 
-          <div className="retry-payment">
-            <Link className="retry-payment-btn" to="/payment">
+          <div className="order-confirm-footer">
+            {(randomPage === 2) ? <Link className="order-confirm-footer-btn" to="/payment">
               Retry payment
+            </Link>:<></>}
+            <Link className="order-confirm-footer-btn" to="/" style={{backgroundColor: 'gray'}}>
+              Shop More
             </Link>
           </div>
         </div>

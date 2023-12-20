@@ -90,6 +90,7 @@ const UserDetails = (props) => {
           onChange={(value) => {
             updateValidatedContactNumber(value);
           }}
+          autoComplete="off"
           id="contact-number"
           className="user-detail-text"
           required

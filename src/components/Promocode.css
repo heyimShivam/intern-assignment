@@ -26,19 +26,20 @@
   text-transform: uppercase;
   padding: 6px 12px 6px 12px;
   font-weight: 300;
-  color: #5076ee;
+  color: var(--primary);
   cursor: pointer;
 }
 
 .modal-css {
   position: absolute;
+  text-align: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400;
   background-color: white;
   font-weight: 300;
-  color: royalblue;
+  color: var(--primary);
   border-radius: 10px;
   padding: 30px 20px;
 }

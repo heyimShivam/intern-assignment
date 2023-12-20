@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 import useProductDetailsStore from "../store/ProductDetailsStore";
 import PaymentOptions from "../components/PaymentOptions";
 
 import "./Payment.css";
-import { useEffect } from "react";
 
 const PaymentPage = () => {
   const totalAmount = useProductDetailsStore((state) => state.totalAmount);
@@ -12,6 +12,7 @@ const PaymentPage = () => {
 
   useEffect(() => {
     document.getElementById("navbar-title").innerText = "Payment";
+    window.scrollTo(0, 0);
   });
 
   return (
