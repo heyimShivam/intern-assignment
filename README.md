@@ -1,5 +1,5 @@
 # Frontend Intern Assignment
-Overview
+## Overview
 This project is a frontend implementation for the Groww internship assignment. The goal is to create a user-friendly, visually engaging, and responsive order placement experience.
 
 ## Table of Contents
