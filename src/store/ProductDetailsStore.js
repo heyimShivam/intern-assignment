@@ -28,7 +28,7 @@ const ProductDetailsStore = (set) => ({
   },
   setDiscount: (value) => {
     set((state) => ({
-      totalAmount: (state.totalAmount + state.discount) - value,
+      totalAmount: state.totalAmount + state.discount - value,
       discount: value,
     }));
   },
@@ -70,8 +70,7 @@ const ProductDetailsStore = (set) => ({
     calculateAmountDetails.orderAmount = orderAmount;
 
     calculateAmountDetails.totalAmount =
-      calculateAmountDetails.orderAmount +
-      calculateAmountDetails.deliveryFee;
+      calculateAmountDetails.orderAmount + calculateAmountDetails.deliveryFee;
 
     set((state) => ({
       detailsProducts: details,

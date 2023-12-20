@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Modal, Box, Typography } from "@mui/material";
+import { Modal, Box, Typography } from "@mui/material";
 
 import useProductDetailsStore from "../store/ProductDetailsStore";
 
@@ -36,9 +36,11 @@ const Promocode = () => {
       setDiscount(check.discount);
       setPromoCodeResponse("Promo code applied");
     } else {
-      setPromoCodeResponse("Promo code not valid! Please enter valid promocode");
+      setPromoCodeResponse(
+        "Promo code not valid! Please enter valid promocode"
+      );
     }
-    
+
     handleOpen();
 
     setTimeout(() => {

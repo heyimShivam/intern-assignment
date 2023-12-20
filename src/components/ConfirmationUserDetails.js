@@ -12,20 +12,14 @@ const ConfirmationUserDetails = () => {
   return (
     <>
       <div className="detail-container">
-        <FontAwesomeIcon
-          icon={faLocationDot}
-          className="user-detail-icon"
-        />
+        <FontAwesomeIcon icon={faLocationDot} className="user-detail-icon" />
 
-        <p className="user-detail-text"> { location } </p>
+        <p className="user-detail-text"> {location} </p>
       </div>
       <div className="detail-container">
-        <FontAwesomeIcon
-          icon={faPhone}
-          className="user-detail-icon"
-        />
+        <FontAwesomeIcon icon={faPhone} className="user-detail-icon" />
 
-        <p className="user-detail-text"> { contactNumber } </p>
+        <p className="user-detail-text"> {contactNumber} </p>
       </div>
     </>
   );

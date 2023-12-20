@@ -3,7 +3,7 @@ import "./Error.css";
 const ErrorPage = () => {
   return (
     <>
-      <h1>This is Error Page.</h1>
+      <h1>Please go to correct url Error 404 not found.</h1>
     </>
   );
 };

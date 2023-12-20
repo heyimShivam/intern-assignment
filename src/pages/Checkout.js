@@ -46,7 +46,9 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     fetchOrderDetails();
+
     document.getElementById("navbar-title").innerText = "Checkout";
+
     window.scrollTo(0, 0);
   }, []);
 
@@ -66,7 +68,9 @@ const CheckoutPage = () => {
           <div className="order-summary-details">
             <div className="order-summary-item">
               Order Amount
-              <span className="order-summary-span-item">{(orderAmount).toFixed(3)}</span>
+              <span className="order-summary-span-item">
+                {orderAmount.toFixed(3)}
+              </span>
             </div>
 
             <div className="order-summary-item">

@@ -22,10 +22,10 @@ const PaymentPage = () => {
         <PaymentOptions />
         <div className="make-payment-section">
           <p className="admin-fee-make-payment-section payment-details">
-            Admin Fee <span>{(adminFee).toFixed(3)}</span>
+            Admin Fee <span>{adminFee.toFixed(3)}</span>
           </p>
           <p className="total-fee-make-payment-section payment-details">
-            Total <span>{(totalAmount).toFixed(3)}</span>
+            Total <span>{totalAmount.toFixed(3)}</span>
           </p>
           <Link className="make-payment-btn-inside" to="/order-confirmation">
             Make a payment

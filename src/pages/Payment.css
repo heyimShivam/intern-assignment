@@ -19,8 +19,8 @@
 }
 
 .payment-method-selected {
-    color: var(--primary);
-    transition: 0.5s;
+  color: var(--primary);
+  transition: 0.5s;
 }
 
 .payment-details {

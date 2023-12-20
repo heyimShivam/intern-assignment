@@ -42,10 +42,6 @@ const appRouter = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/login",
-    element: <HomePage />,
-  },
 ]);
 
 const Routing = () => {

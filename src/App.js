@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import Routing from "./routing";
 import { MERCHANT_METADATA } from "./constants";
+import Routing from "./routing";
 
 import "./App.css";
 
@@ -42,7 +42,7 @@ function App() {
       );
     }
 
-    if(siteMetaData?.merchantLogo) {
+    if (siteMetaData?.merchantLogo) {
       let link = document.querySelector("link[rel~='icon']");
 
       if (!link) {
@@ -54,7 +54,7 @@ function App() {
       link.href = siteMetaData?.merchantLogo;
     }
 
-    if(siteMetaData?.merchantName){
+    if (siteMetaData?.merchantName) {
       let title = document.getElementsByTagName("title")[0];
       title.innerText = siteMetaData?.merchantName;
     }

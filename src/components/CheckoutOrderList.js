@@ -4,7 +4,9 @@ import useProductDetailsStore from "../store/ProductDetailsStore";
 import "./CheckoutOrderList.css";
 
 const CheckoutOrderList = (props) => {
-  const orderDetailsProducts = useProductDetailsStore((state) => state.orderDetailsProducts);
+  const orderDetailsProducts = useProductDetailsStore(
+    (state) => state.orderDetailsProducts
+  );
 
   return (
     <div className="order-list-container">

@@ -13,11 +13,11 @@
   position: relative;
   font-weight: 400;
 }
-.order-summary-span-item{
+.order-summary-span-item {
   position: absolute;
   color: rgb(139, 139, 139);
-  top:0;
-  right:0;
+  top: 0;
+  right: 0;
 }
 
 .checkout-total {
@@ -25,7 +25,7 @@
   width: 600px;
   display: grid;
   grid-template-rows: 10px 30px;
-  gap:10px;
+  gap: 10px;
   grid-template-columns: 2fr 3fr;
 }
 
@@ -100,7 +100,10 @@
 }
 
 @media screen and (max-width: 628px) {
-  .order-summary-details, .payment-method-detail, .order-confirm-footer, .checkout-total {
+  .order-summary-details,
+  .payment-method-detail,
+  .order-confirm-footer,
+  .checkout-total {
     width: 100%;
   }
 }

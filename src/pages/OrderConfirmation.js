@@ -51,7 +51,11 @@ const OrderConfirmation = () => {
   return (
     <>
       <div className="outer-container">
-        <div className={ "order-confirmation " + orderConfirmation[randomPage].class }>
+        <div
+          className={
+            "order-confirmation " + orderConfirmation[randomPage].class
+          }
+        >
           <div className="order-confirmation-text">
             {orderConfirmation[randomPage].text}
           </div>
@@ -149,10 +153,18 @@ const OrderConfirmation = () => {
           )}
 
           <div className="order-confirm-footer">
-            {(randomPage === 2) ? <Link className="order-confirm-footer-btn" to="/payment">
-              Retry payment
-            </Link>:<></>}
-            <Link className="order-confirm-footer-btn" to="/" style={{backgroundColor: 'gray'}}>
+            {randomPage === 2 ? (
+              <Link className="order-confirm-footer-btn" to="/payment">
+                Retry payment
+              </Link>
+            ) : (
+              <></>
+            )}
+            <Link
+              className="order-confirm-footer-btn"
+              to="/"
+              style={{ backgroundColor: "gray" }}
+            >
               Shop More
             </Link>
           </div>

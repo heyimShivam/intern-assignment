@@ -43,7 +43,10 @@
 }
 
 @media screen and (max-width: 628px) {
-  .detail-container, .user-detail-text, .contact-number-text, .contact-number-container {
+  .detail-container,
+  .user-detail-text,
+  .contact-number-text,
+  .contact-number-container {
     width: 100%;
   }
 }
