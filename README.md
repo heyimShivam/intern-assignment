@@ -27,7 +27,7 @@ This project is a frontend implementation for the Groww internship assignment. T
 `git clone https://github.com/your-username/intern-assignment.git`
 
 2. Navigate to the project directory:
-`cd intern-assignment``
+`cd intern-assignment`
 
 3. Run these commands
 a. `npm install` 
