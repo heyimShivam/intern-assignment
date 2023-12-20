@@ -1,0 +1,53 @@
+.shimmer-image {
+  height: 100%;
+  width: 100%;
+  background-color: red;
+}
+
+.shimmer-update-tools {
+    height: 100%;
+    background: #777;
+}
+
+.order-detail-container {
+  padding: 5px;
+  width: 100%;
+  margin: 10px auto;
+  background: #ffffff;
+}
+
+.shimmer {
+  padding: 5px;
+  width: 95%;
+  height: 120px;
+  margin: 10px auto;
+  background: #ffffff;
+}
+
+.shimmer-title, .shimmer-price {
+    height: 20px;
+    border-radius: 10px;
+    margin-bottom: 9px;
+    margin-top: 12px;
+    background: #777;
+}
+
+@keyframes fullView {
+  100% {
+    width: 100%;
+  }
+}
+.animate {
+  animation: shimmer 3s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+  background-size: 1000px 100%;
+}
+@keyframes shimmer {
+  from {
+    background-position: -1000px 0;
+  }
+  to {
+    background-position: 1000px 0;
+  }
+}

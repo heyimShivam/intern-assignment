@@ -1,5 +1,6 @@
 import OrderDetails from "./OrderDetails";
 import useProductDetailsStore from "../store/ProductDetailsStore";
+import ProductListShimmer from "./ProductListShimmer";
 
 import "./CheckoutOrderList.css";
 
@@ -11,7 +12,7 @@ const CheckoutOrderList = (props) => {
   return (
     <div className="order-list-container">
       <p className="subheading-checkout">Order List</p>
-      {orderDetailsProducts ? (
+      {orderDetailsProducts.length > 0 ? (
         <div className="order-list-content">
           {orderDetailsProducts.map((value) => (
             <div className="order-item" key={value.id}>
@@ -20,7 +21,7 @@ const CheckoutOrderList = (props) => {
           ))}
         </div>
       ) : (
-        <>{/* Shimmer */}</>
+        <ProductListShimmer/>
       )}
     </div>
   );
