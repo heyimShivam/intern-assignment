@@ -86,7 +86,7 @@
 .order-confirm-footer-btn {
   display: block;
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--primary);
   padding: 10px;
   text-decoration: none;
   color: white;
