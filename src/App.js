@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Routing from "./routing";
 import { MERCHANT_METADATA } from "./constants";
@@ -6,11 +6,14 @@ import { MERCHANT_METADATA } from "./constants";
 import "./App.css";
 
 function App() {
+  const [siteMetaData, setSiteMetaData] = useState();
+
   async function fetchMetadata() {
     await fetch(MERCHANT_METADATA)
       .then((value) => value.json())
       .then((data) => {
         console.log(data);
+        setSiteMetaData(data);
       })
       .catch((error) => {
         console.log(error);
@@ -19,18 +22,43 @@ function App() {
 
   useEffect(() => {
     fetchMetadata();
-  }, []);
 
-  const value = {
-    merchantName: "GROWW",
-    merchantLogo: "https://groww.in/groww-logo-270.png",
-    theme: {
-      "--background": "hsl(222.2, 84%, 4.9%)",
-      "--foreground": "hsl(210, 40%, 98%)",
-      "--primary": "hsl(217.2, 91.2%, 59.8%)",
-      "--primary-foreground": "hsl(222.2, 47.4%, 11.2%)",
-    },
-  };
+    if (siteMetaData && siteMetaData.theme && siteMetaData.theme["--primary"]) {
+      document.documentElement.style.setProperty(
+        "--primary",
+        siteMetaData.theme["--primary"]
+      );
+      document.documentElement.style.setProperty(
+        "--background",
+        siteMetaData.theme["--background"]
+      );
+      document.documentElement.style.setProperty(
+        "--foreground",
+        siteMetaData.theme["--foreground"]
+      );
+      document.documentElement.style.setProperty(
+        "--primary-foreground",
+        siteMetaData.theme["--primary-foreground"]
+      );
+    }
+
+    if(siteMetaData?.merchantLogo) {
+      let link = document.querySelector("link[rel~='icon']");
+
+      if (!link) {
+        link = document.createElement("link");
+        link.rel = "icon";
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+
+      link.href = siteMetaData?.merchantLogo;
+    }
+
+    if(siteMetaData?.merchantName){
+      let title = document.getElementsByTagName("title")[0];
+      title.innerText = siteMetaData?.merchantName;
+    }
+  }, [siteMetaData?.merchantLogo]);
 
   return (
     <>
