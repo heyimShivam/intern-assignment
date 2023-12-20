@@ -24,7 +24,7 @@ This project is a frontend implementation for the Groww internship assignment. T
 
 ### Installation
 1. Clone the repository:
-`git clone https://github.com/your-username/intern-assignment.git``
+`git clone https://github.com/your-username/intern-assignment.git`
 
 2. Navigate to the project directory:
 `cd intern-assignment``
