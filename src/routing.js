@@ -11,7 +11,9 @@ const ParentComponent = () => {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <div style={{ margin: "60px 0px 0px 0px" }}>
+        <Outlet />
+      </div>
     </>
   );
 };
@@ -32,12 +34,12 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/payment",
-        element: <PaymentPage />
+        element: <PaymentPage />,
       },
       {
         path: "/order-confirmation",
-        element: <OrderConfirmation />
-      }
+        element: <OrderConfirmation />,
+      },
     ],
   },
   {

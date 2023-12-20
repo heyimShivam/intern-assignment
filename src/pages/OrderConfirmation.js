@@ -24,6 +24,7 @@ const OrderConfirmation = () => {
     (state) => state.orderDetailsProducts
   );
   const [orderConfirmationMessage, setOrderConfirmationMessage] = useState("");
+  const [randomPage, setRandomPage] = useState(0);
 
   const orderConfirmation = [
     {
@@ -37,25 +38,30 @@ const OrderConfirmation = () => {
     {
       text: "Payment failed, Please try again.",
       class: "failed",
-    }
-  ]
-
-  let randomIndex = 0;
+    },
+  ];
 
   useEffect(() => {
-    randomIndex = Math.floor(Math.random() * (2 - 0 + 1) + 0);
+    setRandomPage(Math.floor(Math.random() * (2 - 0 + 1) + 0));
 
-    setOrderConfirmationMessage(orderConfirmation[randomIndex].text);
+    console.log(randomPage);
     document.getElementById("navbar-title").innerText = "Confirmation";
   }, []);
 
   return (
     <>
-      <div className={"order-confirmation " + orderConfirmation[randomIndex].class}>
-        <div className="order-confirmation-text">
-          {orderConfirmationMessage}
+      <div className="outer-container">
+        <div
+          className={
+            "order-confirmation " + orderConfirmation[randomPage].class
+          }
+        >
+          <div className="order-confirmation-text">
+            {orderConfirmation[randomPage].text}
+          </div>
         </div>
       </div>
+
       <div className="container">
         <div>
           <h3 className="heading">Delivery Detail</h3>

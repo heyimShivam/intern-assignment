@@ -8,15 +8,15 @@ const HomePage = () => {
     document.getElementById("back-btn-navbar").style.display = "none";
     document.getElementById("navbar-title").innerText = "Home";
     return () => {
-      document.getElementById("back-btn-navbar").style.display = "block";  
-    }
+      document.getElementById("back-btn-navbar").style.display = "block";
+    };
   }, []);
 
   return (
     <>
       <div className="main-div">
         <Link className="groww-assignment-btn" to="/checkout">
-          Groww Assignemnt
+          View Assignment
         </Link>
       </div>
       <div className="end-div">

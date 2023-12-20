@@ -65,7 +65,7 @@ const CheckoutPage = () => {
           <div className="order-summary-details">
             <div className="order-summary-item">
               Order Amount
-              <span className="order-summary-span-item">{orderAmount}</span>
+              <span className="order-summary-span-item">{(orderAmount).toFixed(3)}</span>
             </div>
 
             <div className="order-summary-item">

@@ -7,14 +7,14 @@
   margin-top: 15px;
   border-radius: 3px;
   display: flex;
-  width: fit-content;
+  width: 600px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
 .checkout-promocode-text {
   font-weight: 300;
   font-size: 11px;
-  width: 210px;
+  width: 600px;
   text-transform: uppercase;
   outline: none;
   border: none;
@@ -29,6 +29,20 @@
   color: #5076ee;
   cursor: pointer;
 }
+
+.modal-css {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400;
+  background-color: white;
+  font-weight: 300;
+  color: royalblue;
+  border-radius: 10px;
+  padding: 30px 20px;
+}
+
 
 @media screen and (max-width: 628px) {
   .promocode-container {

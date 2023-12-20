@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Modal, Box, Typography } from "@mui/material";
 
 import useProductDetailsStore from "../store/ProductDetailsStore";
 
@@ -6,11 +7,9 @@ import "./Promocode.css";
 
 const Promocode = () => {
   const setDiscount = useProductDetailsStore((state) => state.setDiscount);
-  const discount = useProductDetailsStore((state) => state.discount);
-  const setTotalAmount = useProductDetailsStore((state) => state.setTotalAmount);
-  const totalAmount = useProductDetailsStore((state) => state.totalAmount);
-  const setOrderAmount = useProductDetailsStore((state) => state.setOrderAmount);
-  const orderAmount = useProductDetailsStore((state) => state.orderAmount);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const promoCodeDetails = [
     {
@@ -20,21 +19,31 @@ const Promocode = () => {
     {
       code: "20-OFF-PROMO-CODE",
       discount: 20,
-    }
+    },
   ];
 
   const [promocodeText, setPromocodeText] = useState("");
+  const [promoCodeResponse, setPromoCodeResponse] = useState("");
 
   function applyPromoCode() {
     promocodeText.toUpperCase();
 
     let check = promoCodeDetails.find((value) => {
-      return value.code === (promocodeText.toUpperCase());
+      return value.code === promocodeText.toUpperCase();
     });
 
-    if(check) {
+    if (check) {
       setDiscount(check.discount);
+      setPromoCodeResponse("Promo code applied");
+    } else {
+      setPromoCodeResponse("Promo code not valid! Please enter valid promocode");
     }
+    
+    handleOpen();
+
+    setTimeout(() => {
+      setOpen(false);
+    }, 2000);
   }
 
   return (
@@ -47,17 +56,48 @@ const Promocode = () => {
           placeholder="Enter Promo Code here..."
           className="checkout-promocode-text"
           value={promocodeText}
-          onChange={(event) => {setPromocodeText(event.target.value)}}
+          onChange={(event) => {
+            setPromocodeText(event.target.value);
+          }}
           required
         />
-        <p className="checkout-promocode-apply-btn" onClick={() => {applyPromoCode()}}>Apply</p>
+        <p
+          className="checkout-promocode-apply-btn"
+          onClick={() => {
+            applyPromoCode();
+          }}
+        >
+          Apply
+        </p>
       </div>
 
       <div className="warnings-toast-container">
         {promoCodeDetails.map((value, index) => {
-          return <span className="warning-toast-message" key={index} style={{color: "gray"}}>{value.code}</span>;
+          return (
+            <span
+              className="warning-toast-message"
+              key={index}
+              style={{ color: "gray" }}
+            >
+              {value.code}
+            </span>
+          );
         })}
       </div>
+
+      {/* Promo code result modal*/}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box className="modal-css">
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            {promoCodeResponse}
+          </Typography>
+        </Box>
+      </Modal>
     </div>
   );
 };
