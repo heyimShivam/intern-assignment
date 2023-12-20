@@ -24,7 +24,11 @@ const PaymentOptions = () => {
   return (
     <div className="payment-all-options">
       <div
-        className={"CARDS" === paymentMethod ? "payment-method card-info selected-method" : "payment-method card-info"}
+        className={
+          "CARDS" === paymentMethod
+            ? "payment-method card-info selected-method"
+            : "payment-method card-info"
+        }
         onClick={() => {
           if (!detailsProducts.paymentMethods?.includes("CARDS")) {
             return;
@@ -72,7 +76,11 @@ const PaymentOptions = () => {
       </div>
 
       <div
-        className={"UPI" === paymentMethod ? "payment-method upi selected-method" : "payment-method upi"}
+        className={
+          "UPI" === paymentMethod
+            ? "payment-method upi selected-method"
+            : "payment-method upi"
+        }
         onClick={() => {
           if (!detailsProducts.paymentMethods?.includes("UPI")) {
             return;
@@ -114,7 +122,11 @@ const PaymentOptions = () => {
       </div>
 
       <div
-        className={"E-WALLET" === paymentMethod ? "payment-method e-wallet selected-method" : "payment-method e-wallet"}
+        className={
+          "E-WALLET" === paymentMethod
+            ? "payment-method e-wallet selected-method"
+            : "payment-method e-wallet"
+        }
         onClick={() => {
           if (!detailsProducts.paymentMethods?.includes("E-WALLET")) {
             return;
@@ -156,7 +168,11 @@ const PaymentOptions = () => {
       </div>
 
       <div
-        className={"COD" === paymentMethod ? "payment-method cod selected-method" : "payment-method cod"}
+        className={
+          "COD" === paymentMethod
+            ? "payment-method cod selected-method"
+            : "payment-method cod"
+        }
         onClick={() => {
           if (!detailsProducts.paymentMethods?.includes("COD")) {
             return;

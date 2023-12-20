@@ -20,9 +20,9 @@ const ProductShimmer = () => {
 const ProductListShimmer = () => {
   return (
     <>
-      <ProductShimmer/>
-      <ProductShimmer/>
-      <ProductShimmer/>
+      <ProductShimmer />
+      <ProductShimmer />
+      <ProductShimmer />
     </>
   );
 };

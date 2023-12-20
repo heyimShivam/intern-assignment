@@ -21,7 +21,7 @@ const CheckoutOrderList = (props) => {
           ))}
         </div>
       ) : (
-        <ProductListShimmer/>
+        <ProductListShimmer />
       )}
     </div>
   );

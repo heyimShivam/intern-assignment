@@ -11,7 +11,6 @@ import useProductDetailsStore from "../store/ProductDetailsStore";
 import "./UserDetails.css";
 
 const UserDetails = (props) => {
-  const [focusDetailContainer, setFocusDetailContainer] = useState("");
   const [tendigitWarning, setTendigitWarning] = useState(false);
   const [alphabetWarning, setAlphabetWarning] = useState(false);
 
@@ -53,13 +52,7 @@ const UserDetails = (props) => {
 
   return (
     <>
-      <div
-        className={
-          focusDetailContainer === "location"
-            ? "detail-container focus"
-            : "detail-container"
-        }
-      >
+      <div className="detail-container">
         <FontAwesomeIcon icon={faLocationDot} className="user-detail-icon" />
         <input
           name="Location"
@@ -74,13 +67,7 @@ const UserDetails = (props) => {
         />
       </div>
 
-      <div
-        className={
-          focusDetailContainer === "contact-number"
-            ? "detail-container focus"
-            : "detail-container"
-        }
-      >
+      <div className="detail-container">
         <FontAwesomeIcon icon={faPhone} className="user-detail-icon" />
         <input
           type="tel"

@@ -13,7 +13,6 @@ import "./OrderDetails.css";
 
 const OrderDetails = ({ checkoutPage, details }) => {
   const [fav, setFav] = useState(false);
-
   const addOrderQuantity = useProductDetailsStore(
     (state) => state.addOrderQuantity
   );
