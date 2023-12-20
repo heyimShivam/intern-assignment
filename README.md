@@ -33,14 +33,14 @@ This project is a frontend implementation for the Groww internship assignment. T
 a. `npm install` 
 b. `npm start`
 
-Important Decisions
+### Important Decisions
 https://docs.google.com/document/d/1crHUKI2wbMeUAJr9Rz6gOJKAlLvX_BopnuGzHbF86R0/edit?usp=sharing
 
-Future Improvements
+### Future Improvements
 1. Payment Method integration.
 2. Desktop UI.
 
-Contact
+### Contact
 If you have any questions or need further clarification, feel free to reach out:
 
 Email: shivamthalwal@gmail.com
