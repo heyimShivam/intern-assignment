@@ -28,7 +28,7 @@
 
 .update-tools {
   display: flex;
-  justify-content: feend;
+  justify-content: flex-end;
   align-items: center;
 }
 
