@@ -16,23 +16,42 @@ import "./OrderConfirmation.css";
 
 const OrderConfirmation = () => {
   const paymentMethod = useProductDetailsStore((state) => state.paymentMethod);
-  const orderDetailsProducts = useProductDetailsStore(
-    (state) => state.orderDetailsProducts
-  );
   const totalAmount = useProductDetailsStore((state) => state.totalAmount);
   const deliveryFee = useProductDetailsStore((state) => state.deliveryFee);
   const orderAmount = useProductDetailsStore((state) => state.orderAmount);
   const discount = useProductDetailsStore((state) => state.discount);
+  const orderDetailsProducts = useProductDetailsStore(
+    (state) => state.orderDetailsProducts
+  );
   const [orderConfirmationMessage, setOrderConfirmationMessage] = useState("");
 
+  const orderConfirmation = [
+    {
+      text: "Order has been placed successfully.",
+      class: "success",
+    },
+    {
+      text: "We are processing your order.",
+      class: "processing",
+    },
+    {
+      text: "Payment failed, Please try again.",
+      class: "failed",
+    }
+  ]
+
+  let randomIndex = 0;
+
   useEffect(() => {
-    setOrderConfirmationMessage("Order has been placed successfully.");
+    randomIndex = Math.floor(Math.random() * (2 - 0 + 1) + 0);
+
+    setOrderConfirmationMessage(orderConfirmation[randomIndex].text);
     document.getElementById("navbar-title").innerText = "Confirmation";
   }, []);
 
   return (
     <>
-      <div className="order-confirmation success failed processing">
+      <div className={"order-confirmation " + orderConfirmation[randomIndex].class}>
         <div className="order-confirmation-text">
           {orderConfirmationMessage}
         </div>

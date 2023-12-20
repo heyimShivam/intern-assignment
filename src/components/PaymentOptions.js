@@ -70,7 +70,7 @@ const PaymentOptions = () => {
             <p> UPI</p>
           </div>
           <div className="payment-option-elements item-3">
-            { paymentMethod !== "upi" ?
+            { paymentMethod !== "UPI" ?
               <FontAwesomeIcon icon={faBarsStaggered} className="payment-method-icon" /> :
               <FontAwesomeIcon icon={faBars} className="payment-method-icon payment-method-selected" />
             }
