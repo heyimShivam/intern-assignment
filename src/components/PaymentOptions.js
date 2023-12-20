@@ -24,8 +24,7 @@ const PaymentOptions = () => {
   return (
     <div className="payment-all-options">
       <div
-        className="payment-method card-info"
-        style={"CARDS" === paymentMethod ? { color: "#5076ee" } : {}}
+        className={"CARDS" === paymentMethod ? "payment-method card-info selected-method" : "payment-method card-info"}
         onClick={() => {
           if (!detailsProducts.paymentMethods?.includes("CARDS")) {
             return;
@@ -73,8 +72,7 @@ const PaymentOptions = () => {
       </div>
 
       <div
-        className="payment-method upi"
-        style={"UPI" === paymentMethod ? { color: "#5076ee" } : {}}
+        className={"UPI" === paymentMethod ? "payment-method upi selected-method" : "payment-method upi"}
         onClick={() => {
           if (!detailsProducts.paymentMethods?.includes("UPI")) {
             return;
@@ -116,8 +114,7 @@ const PaymentOptions = () => {
       </div>
 
       <div
-        className="payment-method e-wallet"
-        style={"E-WALLET" === paymentMethod ? { color: "#5076ee" } : {}}
+        className={"E-WALLET" === paymentMethod ? "payment-method e-wallet selected-method" : "payment-method e-wallet"}
         onClick={() => {
           if (!detailsProducts.paymentMethods?.includes("E-WALLET")) {
             return;
@@ -159,8 +156,7 @@ const PaymentOptions = () => {
       </div>
 
       <div
-        className="payment-method cod"
-        style={"COD" === paymentMethod ? { color: "#5076ee" } : {}}
+        className={"COD" === paymentMethod ? "payment-method cod selected-method" : "payment-method cod"}
         onClick={() => {
           if (!detailsProducts.paymentMethods?.includes("COD")) {
             return;

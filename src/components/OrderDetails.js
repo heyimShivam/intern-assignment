@@ -35,7 +35,7 @@ const OrderDetails = ({ checkoutPage, details }) => {
       <div className="item title-price">
         <div className="title">{details.title}</div>
         <div className="price">
-          Rs. {(details.price * details.quantity).toFixed(3)}
+          Rs. {(details.price).toFixed(3)}
           <span className="quanity-detail">Quantity: {details.quantity}</span>
         </div>
       </div>

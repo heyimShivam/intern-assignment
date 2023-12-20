@@ -12,7 +12,6 @@ function App() {
     await fetch(MERCHANT_METADATA)
       .then((value) => value.json())
       .then((data) => {
-        console.log(data);
         setSiteMetaData(data);
       })
       .catch((error) => {
@@ -42,21 +41,17 @@ function App() {
       );
     }
 
-    if (siteMetaData?.merchantLogo) {
-      let link = document.querySelector("link[rel~='icon']");
-
-      if (!link) {
-        link = document.createElement("link");
-        link.rel = "icon";
-        document.getElementsByTagName("head")[0].appendChild(link);
-      }
-
-      link.href = siteMetaData?.merchantLogo;
-    }
-
     if (siteMetaData?.merchantName) {
       let title = document.getElementsByTagName("title")[0];
       title.innerText = siteMetaData?.merchantName;
+    }
+
+    if (siteMetaData?.merchantLogo) {
+      let link  = document.createElement("link");
+        link.rel = "icon";
+        document.getElementsByTagName("head")[0].appendChild(link);
+
+      link.href = siteMetaData?.merchantLogo;
     }
   }, [siteMetaData?.merchantLogo]);
 
